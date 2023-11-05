@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="flex flex-col md:flex-row bg-green-300 w-full h-full">
+    <div class="w-full  md:visible md:w-1/4 border md:border-0" style="background-image: url('https://plus.unsplash.com/premium_photo-1673435846128-56687ba5959d?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D');">
+        <h1 class="transform -rotate-90 font-bold text-4xl text-white p-4 md:p-0">Login</h1>
+    </div>
+    <div class="border mx-auto h-full w-full md:w-3/4 text-center flex flex-col gap-6 p-4">
+        <h2 class="text-2xl font-bold">Login</h2>
+        <form method="post" class="gap-4">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="{{ form.username.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.password.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                {{ form.password }}
+            </div>
+            <button class="border bg-blue-500 text-white px-6 py-2 rounded" type="submit">Login</button>
+        </form>
+        <div class="mt-4">
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
